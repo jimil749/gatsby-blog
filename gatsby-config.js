@@ -1,9 +1,9 @@
 module.exports = {
   // Customize your site metadata:
   siteMetadata: {
-    title: `My Blog Title`,
-    author: `My Name`,
-    description: `My site description...`,
+    title: `GSoC Weekly Blog`,
+    author: `Jimil Desai`,
+    description: `Record of my weekly work during GSoC'21`,
     social: [
       {
         name: `twitter`,
@@ -11,7 +11,7 @@ module.exports = {
       },
       {
         name: `github`,
-        url: `https://github.com/gatsbyjs`,
+        url: `https://github.com/jimil749`,
       },
     ],
   },

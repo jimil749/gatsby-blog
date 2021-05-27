@@ -7,11 +7,14 @@
 const darkBlue = `#007acc`
 // const lightBlue = `#66E0FF`
 const blueGray = `#282c35`
+const darkBackground = `#282B35`
+const darkPrimary = `#F9A6C4`
 
 const theme = {
     colors: {
-        text: blueGray,
-        primary: darkBlue,
+        text: `#fff`,
+        primary: darkPrimary,
+        background: darkBackground,
         heading: blueGray,
     },
 }

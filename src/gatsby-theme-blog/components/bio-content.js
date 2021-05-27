@@ -8,11 +8,10 @@ import { Themed } from "theme-ui"
 export default function Bio() {
   return (
     <>
-      This is where <Themed.a href="http://example.com/">your name</Themed.a>
+      Personal Blog by <Themed.a href="http://example.com/">Jimil Desai</Themed.a>
       {` `}
-      goes.
-      <br />
-      Or whatever, you make the rules.
+      <br/>
+      My GSoC experience
     </>
   )
 }
