@@ -8,7 +8,7 @@ import { Themed } from "theme-ui"
 export default function Bio() {
   return (
     <>
-      Personal Blog by <Themed.a href="http://example.com/">Jimil Desai</Themed.a>
+      Personal Blog by <Themed.a href="http://jimil-desai.s3-website.ap-south-1.amazonaws.com/">Jimil Desai</Themed.a>
       {` `}
       <br/>
       My GSoC experience

@@ -1,33 +1,36 @@
 ---
-title: Community Bonding
-date: 2019-04-15
-image: ./sunset-beach.jpg
-imageAlt: A beach at sunset with crashing waves.
+title: Community Bonding Period
+date: 2021-05-17
+image: ./gsoc-1.png
+imageAlt: GSoC Bonding Period.
 ---
 
-Hello, world! This is a demo post for `gatsby-theme-blog`.
+Hey there, I'm Jimil Desai! I am a senior at School of Engineering and Applied Sciences, Ahmedabad University. This summer, I'll
+be contributing to the [Reva](https://github.com/cs3org/reva) project during GSoC'21. I'll be essentially working on adding 
+runtime plugins to the Reva Codebase. At the end of the project, plugins could be added to Reva at runtime by pointing to a source
+of Go module.
 
-Delete me, and get writing!
+## What did I do this week?
 
-```js:title=gatsby-config.js
-module.exports = {
-  plugins: [
-    "gatsby-theme-blog", // highlight-line
-    "gatsby-theme-notes",
-  ],
-}
-```
+I spent most of the time of Community Bonding Period getting familiar with the Reva project and the CERNBOX community. This 
+invovled setting up of development environment locally and reading relevent documentation. I also set up the GitHub project to keep track of
+my project with relevent milestones. I did a deep dive into the Reva codebase learning more about the exisiting plugins and planning about how to move them out as 
+external plugins that can be loaded at runtime. I spent the second half of the community bonding period doing some basic 
+research on various open source go plugin systems. This was done to get a gist of how each plugin system works and how 
+plausible each system is. 
 
-This is another paragraph after the code block.
+Following plugin systems were considered:
 
-## This is a secondary heading
+1. Hashicorp go-plugin
+2. Traefik Yaegi Go-interpreter
+3. Pie Plugin
+4. Native Go Plugin package
+5. Goloader
 
-```jsx
-import React from "react"
-import { ThemeProvider } from "theme-ui"
-import theme from "./theme"
+## What is coming up next week?
 
-export default props => (
-  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-)
-```
+I would be working on Benchmarking the Hashicorp, Pie and native Go plugin system.
+
+## Any issues faced during this Period?
+
+No! This week went by smoothly

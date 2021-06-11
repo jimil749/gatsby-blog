@@ -7,7 +7,7 @@ module.exports = {
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/gatsbyjs`,
+        url: `https://twitter.com/jimil_desai`,
       },
       {
         name: `github`,
