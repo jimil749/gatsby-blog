@@ -1,12 +1,39 @@
 ---
-title: My Second Post! (example)
-date: 2019-05-15
+title: GSoC Weekly Check-In (Week 1)
+date: 2021-06-07
 image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
 imageAlt: Laptop on a desk with VS Code open.
 ---
 
-Wow! I love blogging so much already.
+## What Did I do last week?
 
-Did you know that "despite its name, salted duck eggs can also be made from chicken eggs, though the taste and texture will be somewhat different, and the egg yolk will be less rich."? ([Wikipedia Link](https://en.wikipedia.org/wiki/Salted_duck_egg))
+The coding phase of GSoC'21 finally began last week. My aim for last week was to complete benchmarking atleast 3 golang plugin
+systems, which I was able to accomplish. Last week I finished benchmarking the following golang plugin systems:
 
-Yeah, I didn't either.
+1. Hashicorp go-plugin over RPC and gRPC
+2. Pie Plugin
+3. Native go plugin
+
+For the purpose of benchmarking, I used the existing JSON plugin from the Reva codebase. As far as the performance is concerned,
+I've ranked the above mentioned plugins in the order of performance (Fastest to slowest):
+
+1. Native Go plugin
+2. Pie Plugin
+3. Hashicorp go-plugin RPC
+4. Hashicorp go-plugin gRPC
+
+
+Overall, I'd say it was fun working on benchmarking the plugins and it went on smoothly. There weren't any roadblocks/bugs as such.
+
+Link to repo: [Reva-Plugin-Benchmark](https://github.com/jimil749/reva-plugin-benchmark)
+
+## What will I do next week?
+
+The plan for next week is to continue go plugin system benchmarking. Next week, I plan to benchmark following go plugin systems:
+
+1. Goloader
+2. Traefik Yaegi
+
+## Any hiccups?
+
+Other than minor bugs, there weren't any major roadblocks. It went by smoothly! :)
