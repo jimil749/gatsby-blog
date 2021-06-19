@@ -1,0 +1,51 @@
+---
+title: GSoC Weekly Check-In (Week 2)
+date: 2021-06-14
+image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+imageAlt: Laptop on a desk with VS Code open.
+---
+
+## What Did I do last week?
+
+My aim for last week was to complete benchmarking of the remaining 2 of the plugin systems:
+
+1. Yaegi go-interpreter
+2. Goloader
+
+So the last week involved a lot of research into the above mentioned plugin systems. Last week was full of ups and downs as 
+there isn't much documentation around the mentioned frameworks, I had to look into various codebases and examples from github to 
+understand the workings of the frameworks. But due to an roadblock, as mentioned [here](https://github.com/pkujhd/goloader/issues/32) in goloader, I decided that goloader was not
+feasible for our use-case and decided to omit the framework for the time being.
+
+All in all, this week involved benchmarking and evaluating Traefik's yaegi go-interpreter. As per the benchmark data,
+Yaegi's performance overhead is the least among all the plugin systems outside of go-native plugin. 
+
+For the purpose of benchmarking, I used the existing JSON plugin from the Reva codebase. As far as the performance is concerned,
+I've ranked the plugins in the order of performance (Fastest to slowest):
+
+1. Native Go plugin
+2. Yaegi
+3. Pie plugin
+4. Hashicorp go-plugin RPC
+5. Hashicorp go-plugin gRPC
+
+
+Overall, I'd say that last week was a bit bumpy with all the bugs and lack of documentation for the plugin system. But with the help
+of my mentors, I was able to complete my tasks!
+
+Link to repo: [Reva-Plugin-Benchmark](https://github.com/jimil749/reva-plugin-benchmark)
+
+Link to Yaegi repo: [Reva-Yaegi-Benchmark](https://github.com/jimil749/reva-yaegi-benchmark)
+
+## What will I do next week?
+
+The plan for next is to finalize the plugin system to be used for reva plugins and discuss and design the plugin system architecture.
+I'm looking forward it! :)
+
+## Any hiccups?
+
+There was an issue with interpreting Reva json plugin with yaegi due to an indirect dependency on protobufs. Yaegi as of yet, does
+not support interpreting protobufs. [link](https://github.com/traefik/yaegi/issues/1133). This can create major problems going forwarda
+as most of the reva plugins have dependency on protobufs. For this reason, in order to evaluate yaegi, I had to manually define the structs.
+
+Apart from that, there weren't any other issues this week.
