@@ -1,0 +1,58 @@
+---
+title: GSoC Weekly Check-In (Week 4-5)
+date: 2021-06-28
+image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+imageAlt: Laptop on a desk with VS Code open.
+---
+
+## What Did I do last week?
+
+We continued with the discussions on the runtime-plugins. After finalizing the plugin system, we discussed
+how to facilitate it with the existing Reva codebase. (See [#1814](https://github.com/cs3org/reva/issues/1814))
+
+One of the main concerns of the maintainers was to maintain the backwards compatibility. We still wanted to support the 
+existing in-memory registry way of loading plugins. To ensure this, we decided to provide the user an option to 
+switch between plugin mode and registry mode. The registry mode would work same as before and would load plugins from 
+the in-memory registry, whereas the plugin mode would use hashicorp go-plugin mechanism to load the provided plugin.
+
+In the plugin mode, the users are given 3 ways to load the plugins, as describe below:
+
+1. Users can directly provide the path to the plugin binary and the reva code base should directly load the binary
+(via hashicorp go-plugin).
+
+2. Users can provide the path to the locally existing reva drivers. The reva core should first compile the provided source
+into an executable and then load it.
+
+3. Users can also provide an URL, pointing to some version control system like github and reva core should download the
+repo locally, compile the source code and then load the binary executable.
+
+
+```
+# Method 1:
+[grpc.service.userprovider]
+driver="/path/to/binary"
+
+# Method 2:
+[grpc.service.userprovider]
+driver="/path/to/source_code"
+
+# Method 3:
+[grpc.service.userprovider]
+driver="github.com/reva-pkg/userprovider"
+```
+
+I started with the initial implementation in the last of couple weeks. My task was to complement the existing
+`json` driver (userprovider service) to runtime paradigm. I was able to accomplish that and with the current 
+implementation, the reva core is able to load a compiled binary plugin. 
+
+
+Link to PR: https://github.com/cs3org/reva/pull/1861
+
+## What will I do next week?
+
+The plan for next couple of weeks is to work on the compilation stage. For the compilation stage, the reva core
+should ideally compile the provided plugin and then load it.
+
+## Any hiccups?
+
+Not really. Just a few bugs here and there, but nothing major! 
