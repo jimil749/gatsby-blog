@@ -1,0 +1,31 @@
+---
+title: GSoC Weekly Check-In (Week 6-7-8)
+date: 2021-07-19
+image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+imageAlt: Laptop on a desk with VS Code open.
+---
+
+## What Did I do last week?
+
+It's been a long 3 weeks! I continued working on the runtime plugin module for the last month or so. I am regularly reviewing, updating
+and making my PR better. After supporting the compiled binary loading, the next feature that I implemented was the compiling of the plugin 
+and then loading it on the reva core. In order to facilitate this, I used the `go exec` utility to compile the provided code and then 
+load the code! 
+
+PS: The results of the first evaluation period were out on 16th July and I'm glad that I could pass it and hope to continue the good work.
+
+## What will I do next week?
+
+The plan for next week is to download and load plugins hosted as version controlled repository. The user can provide configuration
+such as:
+
+```
+[grpc.services.userprovider]
+driver = "github.com/jimil749/reva-plugin
+```
+
+The reva package should be able to download the code, compile it and then load it for the usage.
+
+## Any hiccups?
+
+Not really. Just a few bugs here and there, but nothing major! 
