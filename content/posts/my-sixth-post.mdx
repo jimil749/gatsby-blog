@@ -9,14 +9,37 @@ imageAlt: Laptop on a desk with VS Code open.
 
 It's been a long 3 weeks! I continued working on the runtime plugin module for the last month or so. I am regularly reviewing, updating
 and making my PR better. After supporting the compiled binary loading, the next feature that I implemented was the compiling of the plugin 
-and then loading it on the reva core. In order to facilitate this, I used the `go exec` utility to compile the provided code and then 
+and then loading it on the reva core. This part was relatively easy and did not require much of a discussion. We decided to compile and store
+the plugin binary at `/var/tmp/reva/bin/<userprovider>/<driver>`. In order to facilitate this, I used the `go exec` utility to compile the provided code and then 
 load the code! 
+
+The load and the compile function looks something like the following:
+
+```go
+func Load(pluginType, driver) (*RevaPlugin, error) {
+    // Loader returns a "loaded" reva plugin
+}
+```
+RevaPlugin plugin represents a loaded reva plugin. It has the following fields:
+
+```go
+type RevaPlugin struct {
+    Plugin interface{}
+    Client *plugin.Client
+}
+```
+
+RevaPlugin contains the plugin implementation and the hashicorp plugin client. This Plugin implementation is used by the 
+services to manage the plugin lifecycle. (Start, Kill plugins).
 
 PS: The results of the first evaluation period were out on 16th July and I'm glad that I could pass it and hope to continue the good work.
 
 ## What will I do next week?
 
-The plan for next week is to download and load plugins hosted as version controlled repository. The user can provide configuration
+The initial plan was to implement hot-reloading of plugins. But this idea was dropped after series of discussions with my mentor because
+of increasing complexity and would involving changing the entire implementation. 
+
+Hence, the plan for next week is to download and load plugins hosted as version controlled repository. The user can provide configuration
 such as:
 
 ```
