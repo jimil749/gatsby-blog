@@ -1,0 +1,44 @@
+---
+title: GSoC Weekly Check-In (Week 9-10)
+date: 2021-08-1
+image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
+imageAlt: Laptop on a desk with VS Code open.
+---
+
+## What Did I do last week?
+
+The plan for the last couple of weeks was to facilitate fetching plugin code from github repository, but due to some unexpected 
+roadblocks, we had to delay fetching external plugins. There were a couple of changes in the existing implementation:
+
+1. Since we decided not to go with hot reloading, there was no need for plugin flags. So instead of using a boolean flag to 
+differentiate b/w in-memory plugins and runtime plugins, I used a simple regex check to get the job done. We simply load the plugin
+from the registry if the configuration contains only characters ranging from [a-z][0-9], else we call the `loader` to load
+plugins at runtime. Ex:
+
+```
+# Loading plugin from registry
+[grpc.services.userprovider]
+driver = "json"
+
+# Loading runtime plugin (contains the path)
+[grpc.services.userprovider]
+driver = "./json"
+```
+
+2. Second issues was to pass context. A lot of Reva plugins would not work if we do not pass context to plugins, and the problem that
+we faced was that Golang RPC package does not support passing context via RPC. Our entire plugin architecture was based off of RPC, which
+meant that this was pretty big deal! We had to find a way to pass context data through RPC, else some of the plugins would be rendered useless.
+
+We solved this issues by pulling values out of the context data and storing it into a `map[interface{}]interface{}` data structure before
+sending out the RPCs. This `map[interface{}]interface{}` was sent as an RPC argument and then was again added to context on the server side.
+My mentor, Ishank came up with smart way of pulling context data out into `map[interface{}]interface{}` by using reflection. [Check it out!](https://github.com/cs3org/reva/pull/1938)
+
+## What will I do next week?
+
+Now that we are almost done with the basic plugin architecture and we have a working implementation of plugin package, which supports both
+compiling the plugins and the existing in-memory plugin, the next step is to facilitate plugins from external repository. 
+
+## Any hiccups?
+
+Yes! There were a couple of roadblocks for me. I struggled to come up with an efficient way to pass context data via RPC. But with the 
+help of my mentors we were able to get over the hump and complete the implementation.
